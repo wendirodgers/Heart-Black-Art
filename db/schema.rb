@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_173404) do
+ActiveRecord::Schema.define(version: 2018_11_02_194143) do
 
   create_table "artist_locations", force: :cascade do |t|
     t.integer "artist_id"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_173404) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "latitude"
+    t.string "longitude"
   end
 
   create_table "media", force: :cascade do |t|
