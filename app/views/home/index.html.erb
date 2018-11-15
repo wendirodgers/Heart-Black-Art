@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="text-center"> Heart Black Art</h1>
+  <h3>Artists</h3>
+  <%= form_tag("/home", method: "get") do %>
+     <%= text_field_tag :search_artists %>
+     <%= submit_tag "Search" %>
+  <% end %>
+  <div class="row"> 
+    <% @artists.each do |artist| %>
+      <div class="col-md-4">
+        <h4> <%= artist.name %> </h4>
+        <p>Location: <%= artist.location %> </p>
+        <%= link_to "artist info", "https://google.com" %>
+        <span>Media: <% artist.media.each do |media| %></span>
+          <span><%= media.name %></span>
+        <% end %>
+        <div class="img-thumbnail border-dark">
+          <% if artist.image.attached? %>
+            <%= image_tag artist.image, class: "w-100" %>
+          <% end %> 
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @artists %>
+  </div>
+</div> 
+

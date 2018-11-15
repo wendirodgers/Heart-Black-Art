@@ -2,12 +2,12 @@ require 'test_helper'
 
 class ArtistsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get artists_index_url
+    get artists_url
     assert_response :success
   end
 
   test "should get show" do
-    get artists_show_url
+    get artist_url(3)
     assert_response :success
   end
 

@@ -3,6 +3,15 @@ Medium.create name: "Acrylic"
 Medium.create name: "Watercolors"
 Medium.create name: "Mixed Media"
 Medium.create name: "Textiles"
+Medium.create name: "Sculpture"
+Medium.create name: "Glass"
+Medium.create name: "Film"
+Medium.create name: "Drawing"
+Medium.create name: "Ceramics"
+Medium.create name: "Printmaking"
+Medium.create name: "Collage"
+Medium.create name: "Digital"
+Medium.create name: "Woodworking"
 
 puts "Created media 🎨"
 
@@ -21,7 +30,7 @@ ages = ["25 and under",
 ]
 
 facebook = [
-  "http://www.facebook.com/hebrubrantly",
+  "http://www.facebook.com/hebrubrantley",
   "http://www.facebook.com/mayafreelon",
   "http://www.facebook.com/kehindewiley",
   "http://www.facebook.com/miyabailey",

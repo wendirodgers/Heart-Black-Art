@@ -1,0 +1,23 @@
+<h1>Admin::Artists#edit</h1>
+<%= form_for @artist, url: admin_artist_path do |f| %>
+  <%= flash[:errors] %>
+  name: <%= f.text_field :name %>
+  gender: <%= f.text_field :gender %>
+  age: <%= f.text_field :age %>
+  location: <%= f.text_field :location %>
+  instagram: <%= f.text_field :instagram %>
+  facebook: <%= f.text_field :facebook %>
+  tumblr: <%= f.text_field :tumblr %>
+  twitter: <%= f.text_field :twitter %>
+  website: <%= f.text_field :website %>
+  <% if @artist.image.attached? %>
+    <%= image_tag @artist.image %>
+  <% end %>  
+
+  image: <%= f.file_field :image %> 
+  <% Medium.all.each do |medium| %>
+    <%= f.label medium.name %>
+    <%= check_box_tag "media[]", medium.id %>
+    <% end %>
+  <%= f.submit %>
+<% end %>
