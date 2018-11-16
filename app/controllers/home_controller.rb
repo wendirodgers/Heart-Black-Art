@@ -6,4 +6,8 @@ class HomeController < ApplicationController
       @artists = Artist.page params[:page]
     end
   end 
+
+  def show
+    @artist = Artist.find(params[:id])
+  end
 end

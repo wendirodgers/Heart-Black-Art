@@ -15,9 +15,16 @@
   <% end %>  
 
   image: <%= f.file_field :image %> 
+  <br>
   <% Medium.all.each do |medium| %>
     <%= f.label medium.name %>
-    <%= check_box_tag "media[]", medium.id %>
-    <% end %>
+    <% if @artist.media.include? medium  %>
+      <%= check_box_tag "media[]", medium.id, checked: true %>
+      <br>
+    <% else %>
+      <%= check_box_tag "media[]", medium.id %>  
+      <br>
+    <% end %>  
+  <% end %>
   <%= f.submit %>
 <% end %>

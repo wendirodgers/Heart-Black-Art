@@ -14,3 +14,17 @@
 //= require popper
 //= require bootstrap
 //= require_tree .
+$(document).ready(function(){
+  var masonryGrid = $('.image-grid');
+
+  masonryGrid.imagesLoaded()
+    .done(function(){
+      masonryGrid.masonry({
+        itemSelector: '.image-grid-item',
+        columnWidth: 240
+      });
+
+      $('.image-grid').addClass('active')
+    });
+})
+

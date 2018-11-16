@@ -1,27 +1,40 @@
 <div class="container">
-  <h1 class="text-center"> Heart Black Art</h1>
-  <h3>Artists</h3>
-  <%= form_tag("/home", method: "get") do %>
-     <%= text_field_tag :search_artists %>
-     <%= submit_tag "Search" %>
-  <% end %>
   <div class="row"> 
-    <% @artists.each do |artist| %>
-      <div class="col-md-4">
-        <h4> <%= artist.name %> </h4>
-        <p>Location: <%= artist.location %> </p>
-        <%= link_to "artist info", "https://google.com" %>
-        <span>Media: <% artist.media.each do |media| %></span>
-          <span><%= media.name %></span>
+    <div class="col-md-4 mt-3">
+      <h1 class="display-5">❤️ Heart Black Art</h1>
+      <h4 class="mt-5">A Database of Black Artists</h4>
+      <p>
+        A digital collection of artists, presented as a well-documented, thoroughly tested REST API.
+      </p>
+      <p>Try it below:</p>
+      <%= form_tag("/home", method: "get") do %>
+         <%= text_field_tag :search_artists, nil, placeholder: "ie. Acrylic" %>
+         <%= submit_tag "Search" %>
+      <% end %>
+
+      <h4 class="mt-5" >Docs</h4>
+      <p>Documentation can be found <%= link_to "here",documentation_path, style: 'color:#f5f5f5; text-decoration: underline' %>.</p>
+
+      <p></p>
+    </div>
+    <div class="col-md-8">
+      <div class="row image-grid">
+        <% @artists.each do |artist| %>
+            <!-- <h4> <%= artist.name %> </h4> -->
+            <!-- <p>Location: <%= artist.location %> </p> -->
+            <%# link_to "artist info", "https://google.com" %>
+            <!-- <span>Media: <% artist.media.each do |media| %></span>
+              <span><%= media.name %></span>
+            <% end %> -->
+              <% if artist.image.attached? %>
+              <%= link_to artist_show_path(artist) do %>
+               <%= image_tag artist.image, class: "image-grid-item", style: "width: 240px; float: right;" %>
+              <% end %> 
+            <% end %> 
         <% end %>
-        <div class="img-thumbnail border-dark">
-          <% if artist.image.attached? %>
-            <%= image_tag artist.image, class: "w-100" %>
-          <% end %> 
-        </div>
+        <%= paginate @artists %>
       </div>
-    <% end %>
-    <%= paginate @artists %>
+    </div>
   </div>
 </div> 
 

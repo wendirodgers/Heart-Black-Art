@@ -24,7 +24,8 @@ class Admin::ArtistsController < ApplicationController
 
   def update
     @artist = Artist.find(params[:id])
-    @artist.media << Medium.find(params[:media])
+    @artist.media.destroy_all
+    @artist.media = Medium.find(params[:media])
     if @artist.update(artist_params)
       redirect_to admin_artists_path
     else 
@@ -35,6 +36,7 @@ class Admin::ArtistsController < ApplicationController
 
   def edit 
     @artist = Artist.find(params[:id])
+    @artist_media = @artist.media
   end
 
   def destroy

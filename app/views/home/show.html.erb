@@ -1,0 +1,39 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col text-right">
+      <h4> <%= @artist.name %> </h4>
+      <p><%= @artist.location %> </p>
+
+      <% if @artist.website.present? %>
+      <p><%= link_to "Website", @artist.website, target: 'blank', style: 'color:#f5f5f5' %><p>
+        <% end %>
+
+      <% if @artist.twitter.present? %>
+        <p><%= link_to "Twitter", @artist.twitter, target: 'blank', style: 'color:#f5f5f5' %><p>
+      <% end %>
+
+      <% if @artist.instagram.present? %>
+        <p><%= link_to "Instagram", @artist.instagram, target: 'blank', style: 'color:#f5f5f5' %><p>
+      <% end %>
+
+      <% if @artist.tumblr.present? %>
+        <p><%= link_to "Tumblr", @artist.tumblr, target: 'blank', style: 'color:#f5f5f5' %><p>
+      <% end %>
+
+      <% if @artist.facebook.present? %>
+        <p><%= link_to "Facebook", @artist.facebook, target: 'blank', style: 'color:#f5f5f5' %><p>
+      <% end %>
+      <ul class="list-unstyled">
+        <h5><i>Media</i></h5>
+        <% @artist.media.each do |media| %>
+          <li ><%= media.name %></li>
+        <% end %>
+      </ul> 
+    </div>
+    <div class="col">
+      <% if @artist.image.attached? %>
+        <%= image_tag @artist.image, style: "width: 240px;" %>
+      <% end %>  
+    </div>
+  </div>
+</div>
